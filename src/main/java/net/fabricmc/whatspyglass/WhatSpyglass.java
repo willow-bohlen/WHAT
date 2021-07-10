@@ -2,7 +2,6 @@ package net.fabricmc.whatspyglass;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
@@ -17,15 +16,12 @@ public class WhatSpyglass implements ModInitializer {
     
     private final MinecraftClient client = MinecraftClient.getInstance();
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+    @Override
+    public void onInitialize() {
 
-		Registry.register(Registry.SOUND_EVENT, MUSIC_ID, MUSIC_EVENT);
-		
-		UseSpyglassCallback.EVENT.register((world, player, hand) -> {
+        Registry.register(Registry.SOUND_EVENT, MUSIC_ID, MUSIC_EVENT);
+        
+        UseSpyglassCallback.EVENT.register((world, player, hand) -> {
             if (inSpyglass) {
                 this.client.getSoundManager().stopSounds(MUSIC_ID, SoundCategory.VOICE);
             }
@@ -34,8 +30,8 @@ public class WhatSpyglass implements ModInitializer {
             player.playSound(
                 MUSIC_EVENT,
                 SoundCategory.VOICE, 
-                1f, //Volume multiplier, 1 is normal, 0.5 is half volume, etc
-                1f // Pitch multiplier, 1 is normal, 0.5 is half pitch, etc
+                1f,
+                1f
             );
 
             return ActionResult.PASS;
@@ -46,5 +42,5 @@ public class WhatSpyglass implements ModInitializer {
             inSpyglass = false;
             return ActionResult.PASS;
         });
-	}
+    }
 }
