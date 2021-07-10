@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "what",
+  "version": "${version}",
+
+  "name": "WHAT",
+  "description": "HOW",
+  "authors": [
+    "QuirkySquid"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/what/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.fabricmc.whatspyglass.WhatSpyglass"
+    ]
+  },
+  "mixins": [
+    "what.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
