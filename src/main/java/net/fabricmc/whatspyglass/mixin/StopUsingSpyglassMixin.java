@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SpyglassItem.class)
 public class StopUsingSpyglassMixin {
-	@Inject(method = "onStoppedUsing()V", at = @At("HEAD"),  cancellable = true)
+	@Inject(method = "onStoppedUsing", at = @At("HEAD"),  cancellable = true)
 	private void stopUsingSpyglass(final ItemStack stack, final World world, final LivingEntity user, final int remainingUseTicks, final CallbackInfo info) {
         ActionResult result = StopUsingSpyglassCallback.EVENT.invoker().interact(stack, world, user, remainingUseTicks);
 
